@@ -111,6 +111,10 @@ ul { list-style: none; }
   border: 2px solid rgba(255,255,255,.35);
 }
 .btn-ghost-white:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+.btn-ghost {
+  background: #fff; color: var(--ink); border: 1px solid var(--border);
+}
+.btn-ghost:hover { background: var(--slate-100); border-color: #cbd5e1; }
 .btn-lg { padding: 16px 32px; font-size: 16px; }
 
 /* ---------- Topbar ---------- */
@@ -438,6 +442,38 @@ li.dropdown:hover .dropdown-menu {
 .pc-icon.bg-purple { background: #faf5ff; }
 .pc-icon.bg-red { background: #fef2f2; }
 .pc-icon.bg-teal { background: #f0fdfa; }
+.pc-img {
+  width: 58px; height: 46px; border-radius: 12px;
+  object-fit: cover; border: 1px solid var(--border); background: var(--slate-100);
+}
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 700;
+}
+.badge-green { background: #dcfce7; color: #15803d; }
+.badge-grey { background: #f1f5f9; color: #64748b; }
+
+/* ---------- Catalog / product listing ---------- */
+.catalog-bar {
+  display: flex; align-items: center; gap: 18px; justify-content: space-between;
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px 16px; box-shadow: var(--shadow-sm); flex-wrap: wrap;
+}
+.catalog-filters { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.catalog-select, .catalog-input {
+  padding: 11px 14px; border: 1px solid var(--border); border-radius: 10px;
+  font-family: var(--font-body); font-size: 14.5px; color: var(--ink);
+  background: var(--white);
+}
+.catalog-select:focus, .catalog-input:focus { outline: none; border-color: var(--blue); }
+.catalog-input { min-width: 220px; }
+.catalog-count { font-size: 13.5px; color: var(--muted); font-weight: 600; }
+@media (max-width: 560px) {
+  .catalog-input { min-width: 100%; }
+  .catalog-select { width: 100%; }
+  .catalog-filters { width: 100%; }
+  .catalog-bar { gap: 12px; }
+}
 
 /* ---------- Why us ---------- */
 .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 26px; }

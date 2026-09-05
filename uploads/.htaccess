@@ -1,0 +1,7 @@
+# Block direct access to uploaded files via PHP execution and
+# prevent directory listing inside the uploads folder.
+Options -Indexes
+
+<FilesMatch "\.(php|php3|php4|php5|phtml|pht|phar)$">
+  Require all denied
+</FilesMatch>
