@@ -71,6 +71,10 @@ img { max-width: 100%; display: block; }
 .sb-brand-name em { color: var(--orange); font-style: normal; }
 
 .sb-nav { padding: 18px 14px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.sb-section {
+  font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.4); padding: 14px 13px 6px;
+}
 .sb-link {
   display: flex; align-items: center; gap: 11px;
   color: rgba(255,255,255,.75);
@@ -155,6 +159,29 @@ img { max-width: 100%; display: block; }
 .sc-icon.bg-orange { background: #fff7ed; }
 .sc-icon.bg-green  { background: #f0fdf4; }
 .sc-icon.bg-red    { background: #fef2f2; }
+.sc-icon.bg-teal   { background: #f0fdfa; }
+.sc-icon.bg-purple { background: #f5f3ff; }
+.sc-icon.bg-slate  { background: #f8fafc; }
+
+/* ---------- Loan status badges ---------- */
+.badge-status-new       { background: #eff6ff; color: #1d4ed8; }
+.badge-status-review    { background: #fff7ed; color: #c2410c; }
+.badge-status-contacted { background: #f0fdfa; color: #0f766e; }
+.badge-status-approved  { background: #dcfce7; color: #15803d; }
+.badge-status-rejected  { background: #fee2e2; color: #b91c1c; }
+.badge-status-closed    { background: #f1f5f9; color: #475569; }
+
+/* ---------- Application detail view ---------- */
+.app-detail-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; }
+.stats-grid-3 { grid-template-columns: repeat(3,1fr); }
+.detail-list { display: flex; flex-direction: column; }
+.detail-row {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 13px 0; border-bottom: 1px solid var(--border);
+}
+.detail-row:last-child { border-bottom: 0; }
+.detail-row .dr-label { width: 160px; flex-shrink: 0; font-weight: 600; color: var(--muted); font-size: 13.5px; }
+.detail-row .dr-value { color: var(--ink); font-size: 14.5px; }
 
 /* ---------- Panels / cards ---------- */
 .panel {
@@ -318,6 +345,7 @@ select.form-control { cursor: pointer; }
    ============================================================ */
 @media (max-width: 1024px) {
   .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .app-detail-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 860px) {
   .admin-sidebar {
@@ -328,9 +356,13 @@ select.form-control { cursor: pointer; }
   .menu-btn { display: block; }
   .admin-content { padding: 18px; }
   .admin-form .form-grid { grid-template-columns: 1fr; }
+  .stats-grid-3 { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 560px) {
   .stats-grid { grid-template-columns: 1fr; }
+  .stats-grid-3 { grid-template-columns: 1fr; }
   .admin-topbar { padding: 12px 16px; flex-wrap: wrap; }
   .au-info { display: none; }
+  .detail-row { flex-direction: column; gap: 4px; }
+  .detail-row .dr-label { width: auto; }
 }

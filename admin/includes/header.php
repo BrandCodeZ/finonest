@@ -12,7 +12,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 function admin_link(string $file, string $current, string $label): string
 {
-    $active = $file === $current ? ' class="sb-link active"' : ' class="sb-link"';
+    $fileBase   = strtok($file, '?');       // file name before '?'
+    $active     = $fileBase === $current ? ' class="sb-link active"' : ' class="sb-link"';
     return '<a href="' . $file . '"' . $active . '>' . $label . '</a>';
 }
 ?>
@@ -37,6 +38,15 @@ function admin_link(string $file, string $current, string $label): string
 
     <nav class="sb-nav">
       <?= admin_link('dashboard.php',   $currentPage, 'Dashboard') ?>
+
+      <div class="sb-section">Loan Applications</div>
+      <?= admin_link('applications.php',     $currentPage, 'All Applications') ?>
+      <?= admin_link('applications.php?status=New', $currentPage, 'New') ?>
+      <?= admin_link('applications.php?status=Under+Review', $currentPage, 'Under Review') ?>
+      <?= admin_link('applications.php?status=Approved', $currentPage, 'Approved') ?>
+      <?= admin_link('applications.php?status=Rejected', $currentPage, 'Rejected') ?>
+
+      <div class="sb-section">Products</div>
       <?= admin_link('products.php',    $currentPage, 'Products') ?>
       <?= admin_link('add-product.php', $currentPage, 'Add Product') ?>
       <?= admin_link('categories.php',  $currentPage, 'Categories') ?>

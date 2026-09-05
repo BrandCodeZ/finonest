@@ -10,6 +10,10 @@
 
 declare(strict_types=1);
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/functions.php';
 
@@ -41,15 +45,32 @@ require __DIR__ . '/includes/site_header.php';
         <h2 style="font-size:30px">Get Your Loan Fast</h2>
         <p>Step 1 of 2 — tell us the loan you need and your basic details.</p>
       </div>
-      <form class="loan-form" id="loanForm">
+      <?php
+      $successMsg = $_SESSION['app_success'] ?? '';
+      $errorMsg   = $_SESSION['app_error'] ?? '';
+      unset($_SESSION['app_success'], $_SESSION['app_error']);
+      $fv = $_SESSION['app_form'] ?? [];
+      unset($_SESSION['app_form']);
+      ?>
+      <form class="loan-form" id="loanForm" action="submit-application.php" method="post">
         <h3>Loan Application Form</h3>
         <div class="form-sub">All fields are required. Your data is 100% secure.</div>
+
+        <?php if ($successMsg): ?>
+          <div class="form-alert form-alert-success" style="margin-bottom:16px"><?= e($successMsg) ?></div>
+        <?php elseif ($errorMsg): ?>
+          <div class="form-alert form-alert-error" style="margin-bottom:16px"><?= e($errorMsg) ?></div>
+        <?php endif; ?>
+
+        <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>" />
+        <input type="hidden" name="loan_type" id="loanTypeInput" value="<?= e($fv['loan_type'] ?? '') ?>" />
+
         <div class="form-group full" style="margin-bottom:16px">
           <label>What type of loan are you looking for?</label>
           <div class="prod-select" id="prodSelect">
             <?php if ($applyProducts): ?>
               <?php foreach ($applyProducts as $prod): ?>
-                <div class="prod-option" data-loan="<?= e($prod['product_name']) ?>">
+                <div class="prod-option <?= (($fv['loan_type'] ?? '') === $prod['product_name']) ? 'active' : '' ?>" data-loan="<?= e($prod['product_name']) ?>">
                   <?php if (product_image_url($prod['image']) !== default_product_image()): ?>
                     <img class="po-ic" src="<?= e(product_image_url($prod['image'])) ?>" alt="<?= e($prod['product_name']) ?>" style="object-fit:cover" />
                   <?php else: ?>
@@ -66,41 +87,41 @@ require __DIR__ . '/includes/site_header.php';
         <div class="form-grid">
           <div class="form-group">
             <label>Full Name</label>
-            <input type="text" placeholder="Enter your full name" required>
+            <input type="text" name="full_name" placeholder="Enter your full name" value="<?= e($fv['full_name'] ?? '') ?>" required>
           </div>
           <div class="form-group">
             <label>Mobile Number</label>
-            <input type="tel" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+            <input type="tel" name="mobile_number" placeholder="10-digit mobile number" pattern="[0-9]{10}" value="<?= e($fv['mobile_number'] ?? '') ?>" required>
           </div>
           <div class="form-group">
             <label>Email (optional)</label>
-            <input type="email" placeholder="you@example.com">
+            <input type="email" name="email" placeholder="you@example.com" value="<?= e($fv['email'] ?? '') ?>">
           </div>
           <div class="form-group">
             <label>City</label>
-            <input type="text" placeholder="Your city" required>
+            <input type="text" name="city" placeholder="Your city" value="<?= e($fv['city'] ?? '') ?>" required>
           </div>
           <div class="form-group">
             <label>Employment Type</label>
-            <select required>
+            <select name="employment_type" required>
               <option value="">Select employment</option>
-              <option>Salaried</option>
-              <option>Self Employed</option>
-              <option>Business Owner</option>
-              <option>Freelancer</option>
+              <option value="Salaried" <?= (($fv['employment_type'] ?? '') === 'Salaried') ? 'selected' : '' ?>>Salaried</option>
+              <option value="Self Employed" <?= (($fv['employment_type'] ?? '') === 'Self Employed') ? 'selected' : '' ?>>Self Employed</option>
+              <option value="Business Owner" <?= (($fv['employment_type'] ?? '') === 'Business Owner') ? 'selected' : '' ?>>Business Owner</option>
+              <option value="Freelancer" <?= (($fv['employment_type'] ?? '') === 'Freelancer') ? 'selected' : '' ?>>Freelancer</option>
             </select>
           </div>
           <div class="form-group">
             <label>Monthly Income (₹)</label>
-            <input type="number" placeholder="e.g. 50000" required>
+            <input type="number" name="monthly_income" min="0" placeholder="e.g. 50000" value="<?= e($fv['monthly_income'] ?? '') ?>" required>
           </div>
           <div class="form-group full">
             <label>Loan Amount Needed (₹)</label>
-            <input type="number" placeholder="e.g. 1000000" required>
+            <input type="number" name="loan_amount" min="1" placeholder="e.g. 1000000" value="<?= e($fv['loan_amount'] ?? '') ?>" required>
           </div>
           <div class="form-group full">
             <label>Message (optional)</label>
-            <textarea rows="3" placeholder="Tell us anything about your requirement"></textarea>
+            <textarea rows="3" name="message" placeholder="Tell us anything about your requirement"><?= e($fv['message'] ?? '') ?></textarea>
           </div>
         </div>
         <button type="submit" class="btn btn-orange btn-lg">Submit Application →</button>

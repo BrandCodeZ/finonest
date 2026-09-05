@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Product selector on apply page
   const prodSelect = document.querySelector('#prodSelect');
+  const loanTypeInput = document.querySelector('#loanTypeInput');
   let selectedLoan = '';
   if (prodSelect) {
     prodSelect.querySelectorAll('.prod-option').forEach(opt => {
@@ -82,29 +83,50 @@ document.addEventListener('DOMContentLoaded', () => {
         prodSelect.querySelectorAll('.prod-option').forEach(o => o.classList.remove('active'));
         opt.classList.add('active');
         selectedLoan = opt.dataset.loan;
+        if (loanTypeInput) loanTypeInput.value = selectedLoan;
       });
     });
   }
 
-  // Apply/Contact form submit (demo)
+  // Apply/Contact form submit
   document.querySelectorAll('form.loan-form').forEach(loanForm => {
     loanForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      let success = loanForm.querySelector('.form-success');
-      if (!success) {
-        success = document.createElement('div');
-        success.className = 'form-success';
-        loanForm.appendChild(success);
+      const realBackend = loanForm.getAttribute('action') === 'submit-application.php';
+
+      // Contact form + static demo forms: show inline success (no backend).
+      if (loanForm.id === 'contactForm' || !realBackend) {
+        e.preventDefault();
+        let success = loanForm.querySelector('.form-success');
+        if (!success) {
+          success = document.createElement('div');
+          success.className = 'form-success';
+          loanForm.appendChild(success);
+        }
+        success.style.display = 'block';
+        if (loanForm.id === 'contactForm') {
+          success.textContent = '🙏 Thank you! Your message has been received. We will get back to you within 24 hours.';
+        } else {
+          success.textContent = '🎉 Thank you! Our loan expert will contact you within 24 hours' + (selectedLoan ? ' regarding your ' + selectedLoan + '.' : '.');
+          loanForm.reset();
+          prodSelect && prodSelect.querySelectorAll('.prod-option').forEach(o => o.classList.remove('active'));
+        }
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
       }
-      success.style.display = 'block';
-      if (loanForm.id === 'contactForm') {
-        success.textContent = '🙏 Thank you! Your message has been received. We will get back to you within 24 hours.';
-      } else {
-        success.textContent = '🎉 Thank you! Our loan expert will contact you within 24 hours' + (selectedLoan ? ' regarding your ' + selectedLoan + '.' : '.');
-        loanForm.reset();
-        prodSelect && prodSelect.querySelectorAll('.prod-option').forEach(o => o.classList.remove('active'));
+
+      // Real loan application: set the hidden loan_type, then let it submit to the server.
+      if (loanTypeInput && selectedLoan) loanTypeInput.value = selectedLoan;
+      if (prodSelect && !selectedLoan) {
+        e.preventDefault();
+        let err = loanForm.querySelector('.form-alert-error');
+        if (!err) {
+          err = document.createElement('div');
+          err.className = 'form-alert form-alert-error';
+          loanForm.querySelector('h3').after(err);
+        }
+        err.textContent = 'Please select the type of loan you are looking for.';
+        window.scrollTo({ top: loanForm.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' });
       }
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
 

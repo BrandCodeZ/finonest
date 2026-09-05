@@ -97,6 +97,32 @@ function get_flash(): ?array
 }
 
 /**
+ * Allowed loan application statuses and their display colours.
+ * Returns an associative map: status => [label, cssClass].
+ */
+function loan_statuses(): array
+{
+    return [
+        'New'          => ['label' => 'New',            'class' => 'badge-status-new'],
+        'Under Review' => ['label' => 'Under Review',   'class' => 'badge-status-review'],
+        'Contacted'    => ['label' => 'Contacted',      'class' => 'badge-status-contacted'],
+        'Approved'     => ['label' => 'Approved',       'class' => 'badge-status-approved'],
+        'Rejected'     => ['label' => 'Rejected',       'class' => 'badge-status-rejected'],
+        'Closed'       => ['label' => 'Closed',         'class' => 'badge-status-closed'],
+    ];
+}
+
+/**
+ * Render a badge for a loan application status.
+ */
+function loan_status_badge(?string $status): string
+{
+    $map  = loan_statuses();
+    $item = $map[$status] ?? ['label' => $status ?: 'New', 'class' => 'badge-status-new'];
+    return '<span class="badge ' . e($item['class']) . '">' . e($item['label']) . '</span>';
+}
+
+/**
  * Default product image when no image has been uploaded.
  */
 function default_product_image(): string

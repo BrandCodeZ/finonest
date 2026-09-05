@@ -747,6 +747,17 @@ li.dropdown:hover .dropdown-menu {
   margin-top: 16px;
 }
 
+.form-alert {
+  border-radius: 12px;
+  padding: 16px 18px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 4px;
+}
+.form-alert-success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+.form-alert-error   { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
+
 /* ---------- CTA small inside page ---------- */
 .small-cta {
   background: linear-gradient(135deg, var(--navy-2), var(--navy));

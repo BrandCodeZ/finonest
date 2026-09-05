@@ -11,6 +11,34 @@ CREATE DATABASE IF NOT EXISTS finonest_db
 USE finonest_db;
 
 -- ------------------------------------------------------------
+-- Table: loan_applications
+-- Loan applications submitted from the frontend "Apply for Loan" form.
+-- Columns mirror the actual fields in apply.php / apply.html.
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS loan_applications (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  loan_type VARCHAR(150) NOT NULL,
+  full_name VARCHAR(150) NOT NULL,
+  mobile_number VARCHAR(20) NOT NULL,
+  email VARCHAR(150) DEFAULT NULL,
+  city VARCHAR(120) NOT NULL,
+  employment_type VARCHAR(60) NOT NULL,
+  monthly_income DECIMAL(14,2) NOT NULL DEFAULT 0.00,
+  loan_amount DECIMAL(14,2) NOT NULL DEFAULT 0.00,
+  message TEXT DEFAULT NULL,
+  application_status ENUM('New','Under Review','Contacted','Approved','Rejected','Closed')
+    NOT NULL DEFAULT 'New',
+  admin_notes TEXT DEFAULT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_status (application_status),
+  KEY idx_loan_type (loan_type),
+  KEY idx_mobile (mobile_number),
+  KEY idx_created_at (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ------------------------------------------------------------
 -- Table: admins
 -- Stores admin login credentials (password is hashed)
 -- ------------------------------------------------------------
