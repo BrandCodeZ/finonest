@@ -1,0 +1,359 @@
+<!-- ============ EMI CALCULATOR HERO (header section) ============ -->
+<section class="emi-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Tools &nbsp;/&nbsp; EMI Calculator</div>
+    <h1>EMI <span class="grad">Calculator</span></h1>
+    <p class="lead">Calculate your monthly EMI, total interest and total payment for <strong>home, car &amp; personal loans</strong> instantly. Compare across tenures and lenders before you apply.</p>
+
+    <!-- ===== EMI Calculator Card ===== -->
+    <div class="emi-calculator" id="emiCalc">
+      <div class="emi-inputs">
+        <div class="ei-title">
+          <h3>Calculate Your EMI</h3>
+          <span>Adjust the sliders below</span>
+        </div>
+
+        <div class="loan-presets">
+          <button class="active" data-preset="home">🏠 Home Loan <small>7.0% p.a.</small></button>
+          <button data-preset="car">🚗 Car Loan <small>7.99% p.a.</small></button>
+          <button data-preset="personal">💳 Personal Loan <small>10.49% p.a.</small></button>
+        </div>
+
+        <div class="calc-field">
+          <div class="cf-top"><label for="calcAmount">Loan Amount</label><output id="amountOut">₹12,00,000</output></div>
+          <input type="number" id="calcAmount" min="100000" max="20000000" step="50000" value="1200000">
+          <input type="range" class="calc-range" id="amountRange" min="100000" max="20000000" step="50000" value="1200000">
+          <div class="range-labels"><span>₹1 Lakh</span><span>₹2 Crore</span></div>
+        </div>
+
+        <div class="calc-row">
+          <div class="calc-field">
+            <div class="cf-top"><label for="calcRate">Interest Rate</label><output id="rateOut">7.00%</output></div>
+            <input type="number" id="calcRate" min="5" max="24" step="0.05" value="7">
+            <input type="range" class="calc-range" id="rateRange" min="5" max="24" step="0.05" value="7">
+            <div class="range-labels"><span>5%</span><span>24%</span></div>
+          </div>
+          <div class="calc-field">
+            <div class="cf-top"><label for="calcTenure">Tenure (Years)</label><output id="tenureOut">5 yrs</output></div>
+            <input type="number" id="calcTenure" min="1" max="30" step="1" value="5">
+            <input type="range" class="calc-range" id="tenureRange" min="1" max="30" step="1" value="5">
+            <div class="range-labels"><span>1 yr</span><span>30 yrs</span></div>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <div class="cf-top"><label for="calcFee">Processing Fee</label><output id="feeOut">1.00%</output></div>
+          <input type="number" id="calcFee" min="0" max="5" step="0.1" value="1">
+          <input type="range" class="calc-range" id="feeRange" min="0" max="5" step="0.1" value="1">
+          <div class="range-labels"><span>0%</span><span>5%</span></div>
+        </div>
+
+        <div class="emi-btn-row">
+          <a href="apply.html" class="btn btn-primary btn-lg">Apply for This Loan →</a>
+        </div>
+      </div>
+
+      <div class="emi-outputs">
+        <div class="eo-head">
+          <h3>Your EMI Result</h3>
+          <span>Reducing Balance</span>
+        </div>
+
+        <div class="donut-wrap">
+          <div class="donut">
+            <svg viewBox="0 0 42 42">
+              <circle class="bg" cx="21" cy="21" r="15.9"></circle>
+              <circle class="principal" id="donutPrinc" cx="21" cy="21" r="15.9"></circle>
+              <circle class="interest" id="donutInt" cx="21" cy="21" r="15.9"></circle>
+            </svg>
+            <div class="donut-center"><span class="lbl">Total Pay</span><span class="val" id="donutTotal">₹14.3 L</span></div>
+          </div>
+          <div class="donut-legend">
+            <span class="lg"><span class="sw o"></span> Principal <b id="lgPrinc">₹12 L</b></span>
+            <span class="lg"><span class="sw b"></span> Interest <b id="lgInt">₹2.3 L</b></span>
+          </div>
+        </div>
+
+        <div class="emi-big">
+          <div class="k">Monthly EMI</div>
+          <div class="v">₹23,761 <span>/ month</span></div>
+        </div>
+
+        <div class="emi-stats">
+          <div class="emi-stat"><div class="k">Total Payment</div><div class="val" id="stTotal">₹14,25,660</div></div>
+          <div class="emi-stat"><div class="k">Total Interest</div><div class="val i" id="stInterest">₹2,25,660</div></div>
+          <div class="emi-stat"><div class="k">Principal</div><div class="val p" id="stPrinc">₹12,00,000</div></div>
+          <div class="emi-stat"><div class="k">Processing Fee</div><div class="val f" id="stFee">₹12,000</div></div>
+        </div>
+
+        <p class="emi-note">* Estimates only. Your actual EMI depends on the lender's final rate, credit profile and processing terms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS OF EMI CALCULATOR ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Why Use It</span>
+      <h2>Benefits of Our EMI Calculator</h2>
+      <p>Plan your borrowing with confidence — know your exact monthly commitment before you apply.</p>
+    </div>
+    <div class="emi-benefit-grid">
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-blue">⏱️</div>
+        <h3>Instant Results</h3>
+        <p>Get your EMI, total interest and total payment the moment you move a slider — no waiting, no downloads, instantly on screen.</p>
+      </div>
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-green">🎯</div>
+        <h3>Accurate Estimates</h3>
+        <p>Uses the same reducing-balance formula banks and NBFCs use, so your estimate closely matches the final sanctioned EMI.</p>
+      </div>
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-purple">🔄</div>
+        <h3>Compare Scenarios</h3>
+        <p>Test different loan amounts, tenures and rates side by side to find the EMI that fits comfortably in your monthly budget.</p>
+      </div>
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-orange">🧾</div>
+        <h3>Transparent Fees</h3>
+        <p>See your processing fee separately so you know the true cost of borrowing — no hidden charges, ever.</p>
+      </div>
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-teal">📊</div>
+        <h3>Principal &amp; Interest View</h3>
+        <p>The visual breakdown shows exactly how much of each payment clears principal versus interest over the loan.</p>
+      </div>
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-red">💳</div>
+        <h3>Pre-Loan Readiness</h3>
+        <p>Check affordability before applying — keeping your FOIR healthy improves approval chances with every lender.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY TAKE FROM FINONEST ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Why Finonest</span>
+      <h2>Why Take a Loan From Here?</h2>
+      <p>Comparing EMIs is step one. Getting them at the lowest rate is what we do best.</p>
+    </div>
+    <div class="why-finonest-grid">
+      <div class="why-item">
+        <div class="wi-icon bg-blue">🏦</div>
+        <h3>50+ Banking Partners</h3>
+        <p>We compare your profile with 50+ leading banks and NBFCs and bring you the lowest rate on the table.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-orange">📉</div>
+        <h3>Lowest Interest Rates</h3>
+        <p>Home loans from 7.30%, car loans from 7.99% and personal loans from 10.49% — rates that make your EMI lighter.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-green">⚡</div>
+        <h3>24-Hour Approval</h3>
+        <p>Pre-approved offers and a digital-first process mean most loans get approval and disbursal within 24 hours.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-purple">🔍</div>
+        <h3>Zero Hidden Fees</h3>
+        <p>Complete transparency on processing fees, foreclosure charges and every rupee — the EMI you see is what you pay.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-teal">🚪</div>
+        <h3>Doorstep Assistance</h3>
+        <p>From document pickup to verification and disbursal coordination, our team handles it all at your doorstep.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-red">🤝</div>
+        <h3>50,000+ Happy Customers</h3>
+        <p>9+ years of trust, 18+ branches and a 4.9-rated advisory team behind every loan we disburse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT IS EMI ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Learn</span>
+      <h2>What is an EMI?</h2>
+      <p>Equated Monthly Instalment — the fixed amount you pay every month towards repaying your loan.</p>
+    </div>
+    <div class="emi-info-grid">
+      <div class="why-item">
+        <div class="wi-icon bg-blue">💡</div>
+        <h3>Two Components</h3>
+        <p>Every EMI contains <strong>principal</strong> (the amount you borrowed) and <strong>interest</strong> (the lender's charge). Your EMI stays fixed for the whole tenure.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-orange">📉</div>
+        <h3>Reducing Balance</h3>
+        <p>Banks use the reducing-balance method — interest is charged only on the outstanding amount. So the interest share falls every month while the principal share rises.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-green">🧮</div>
+        <h3>The Formula</h3>
+        <p>EMI = P × r × (1 + r)<sup>n</sup> ÷ [(1 + r)<sup>n</sup> − 1], where P = principal, r = monthly interest rate, n = number of months.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW TO USE ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Guide</span>
+      <h2>How to Use This EMI Calculator</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Pick Your Loan</h3>
+        <p>Select Home, Car or Personal loan to auto-fill typical rates.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Set the Amount</h3>
+        <p>Move the slider or type the exact loan amount you need.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Adjust Rate &amp; Tenure</h3>
+        <p>Enter the interest rate and repayment period in years.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>Read the Result</h3>
+        <p>Your EMI, total interest and total payment update instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMI REFERENCE TABLES ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Reference</span>
+      <h2>EMI Reference Tables</h2>
+      <p>Pre-calculated monthly EMIs for popular loan amounts at current indicative rates.</p>
+    </div>
+
+    <div class="section" style="padding:0 0 50px">
+      <div class="emi-table-caption">
+        <h3>Home Loan EMI — @ 7.30% p.a.</h3>
+        <span>Reducing balance</span>
+      </div>
+      <div class="table-wrap">
+        <table class="emi-table">
+          <thead>
+            <tr><th>Loan Amount</th><th>10 Years</th><th>15 Years</th><th>20 Years</th><th>25 Years</th><th>30 Years</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>₹20 Lakh</td><td>23,532</td><td>18,314</td><td>15,868</td><td>14,521</td><td>13,711</td></tr>
+            <tr><td>₹30 Lakh</td><td>35,298</td><td>27,471</td><td>23,802</td><td>21,781</td><td>20,567</td></tr>
+            <tr><td>₹40 Lakh</td><td>47,064</td><td>36,627</td><td>31,736</td><td>29,041</td><td>27,423</td></tr>
+            <tr><td>₹50 Lakh</td><td>58,830</td><td>45,784</td><td>39,670</td><td>36,302</td><td>34,279</td></tr>
+            <tr><td>₹1 Crore</td><td>1,17,661</td><td>91,568</td><td>79,341</td><td>72,603</td><td>68,557</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section" style="padding:0 0 50px">
+      <div class="emi-table-caption">
+        <h3>Car Loan EMI — @ 7.99% p.a.</h3>
+        <span>Reducing balance</span>
+      </div>
+      <div class="table-wrap">
+        <table class="emi-table">
+          <thead>
+            <tr><th>Loan Amount</th><th>1 Year</th><th>3 Years</th><th>5 Years</th><th>7 Years</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>₹3 Lakh</td><td>26,095</td><td>9,400</td><td>6,081</td><td>4,674</td></tr>
+            <tr><td>₹5 Lakh</td><td>43,492</td><td>15,666</td><td>10,136</td><td>7,791</td></tr>
+            <tr><td>₹7 Lakh</td><td>60,889</td><td>21,932</td><td>14,190</td><td>10,907</td></tr>
+            <tr><td>₹10 Lakh</td><td>86,984</td><td>31,332</td><td>20,272</td><td>15,581</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section" style="padding:0">
+      <div class="emi-table-caption">
+        <h3>Personal Loan EMI — @ 10.49% p.a.</h3>
+        <span>Reducing balance</span>
+      </div>
+      <div class="table-wrap">
+        <table class="emi-table">
+          <thead>
+            <tr><th>Loan Amount</th><th>1 Year</th><th>2 Years</th><th>3 Years</th><th>5 Years</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>₹1 Lakh</td><td>8,814</td><td>4,637</td><td>3,250</td><td>2,149</td></tr>
+            <tr><td>₹2 Lakh</td><td>17,629</td><td>9,274</td><td>6,500</td><td>4,298</td></tr>
+            <tr><td>₹3 Lakh</td><td>26,443</td><td>13,911</td><td>9,749</td><td>6,447</td></tr>
+            <tr><td>₹5 Lakh</td><td>44,072</td><td>23,186</td><td>16,249</td><td>10,744</td></tr>
+            <tr><td>₹10 Lakh</td><td>88,144</td><td>46,371</td><td>32,498</td><td>21,489</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:34px">Figures are indicative and rounded. Actual EMIs depend on the lender's final rate and your eligibility.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">FAQs</span>
+      <h2>EMI Calculator — Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">What factors affect my EMI?<span class="icon">+</span></div>
+        <div class="faq-a"><p>Three things decide your EMI: the loan amount, the interest rate and the tenure. A larger loan or a lower tenure means a higher EMI; a longer tenure lowers the EMI but increases total interest.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this calculator accurate for my loan?<span class="icon">+</span></div>
+        <div class="faq-a"><p>The calculator uses the standard reducing-balance formula used by all Indian banks and NBFCs. Actual figures may vary slightly with the lender's exact pricing, processing fees and when the first EMI begins.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How can I reduce my monthly EMI?<span class="icon">+</span></div>
+        <div class="faq-a"><p>Choose a longer tenure, make a higher down payment to reduce the principal, or improve your credit score to qualify for a lower interest rate.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Should I prefer a shorter or longer tenure?<span class="icon">+</span></div>
+        <div class="faq-a"><p>A shorter tenure means higher EMIs but much lower total interest. A longer tenure gives lower EMIs but you pay considerably more interest over the life of the loan. Choose based on your monthly cash flow.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does the processing fee affect my EMI?<span class="icon">+</span></div>
+        <div class="faq-a"><p>Processing fees are usually deducted from the sanctioned amount or paid upfront — they don't change the EMI but increase your total cost of borrowing. We show it separately so you see the full picture.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section" style="padding-top:0;margin-top:-1px">
+  <div class="container">
+    <div class="small-cta">
+      <div>
+        <h3>Happy With Your EMI Estimate?</h3>
+        <p>Apply now and let our experts lock the lowest rate from 50+ partner banks for your exact profile.</p>
+      </div>
+      <a href="apply.html" class="btn btn-orange btn-lg">Apply Now →</a>
+    </div>
+  </div>
+</section>

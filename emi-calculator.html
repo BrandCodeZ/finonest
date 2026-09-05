@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMI Calculator - Finonest | Home, Car & Personal Loan EMI</title>
+  <meta name="description" content="Calculate your monthly EMI for home, car and personal loans instantly. Compare tenures, interest rates and total payments." />
+  <meta name="author" content="Finonest India Pvt. Ltd." />
+  <meta name="theme-color" content="#0a3055" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ===== Topbar ===== -->
+<div class="topbar">
+  <div class="container">
+    <div class="tb-left">
+      <span class="tb-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 94625 53887
+      </span>
+      <span class="tb-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@finonest.com
+      </span>
+    </div>
+    <div class="tb-right">
+      <span class="tb-item">Mon - Sat: 9:30 AM - 7:00 PM</span>
+      <span class="tb-item">May I help you?</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">F</span>
+      <span class="logo-text">Finonest<span>.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="nav-link">Loans <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="dropdown-menu">
+          <a href="home-loan.html"><span class="dd-icon bg-blue">🏠</span> Home Loan</a>
+          <a href="car-loan.html"><span class="dd-icon bg-orange">🚗</span> Car Loan</a>
+          <a href="personal-loan.html"><span class="dd-icon bg-green">💳</span> Personal Loan</a>
+          <a href="business-loan.html"><span class="dd-icon bg-purple">💼</span> Business Loan</a>
+          <a href="loan-against-property.html"><span class="dd-icon bg-red">🏢</span> Loan Against Property</a>
+        </div>
+      </li>
+      <li><a href="credit-cards.html">Credit Cards</a></li>
+      <li><a href="emi-calculator.html">EMI Calculator</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="dsa-partner.html">DSA Partner</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="apply.html" class="btn btn-primary">Apply Now</a>
+      <button class="menu-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Page content ===== -->
+<!-- ============ EMI CALCULATOR HERO (header section) ============ -->
+<section class="emi-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Tools &nbsp;/&nbsp; EMI Calculator</div>
+    <h1>EMI <span class="grad">Calculator</span></h1>
+    <p class="lead">Calculate your monthly EMI, total interest and total payment for <strong>home, car &amp; personal loans</strong> instantly. Compare across tenures and lenders before you apply.</p>
+
+    <!-- ===== EMI Calculator Card ===== -->
+    <div class="emi-calculator" id="emiCalc">
+      <div class="emi-inputs">
+        <div class="ei-title">
+          <h3>Calculate Your EMI</h3>
+          <span>Adjust the sliders below</span>
+        </div>
+
+        <div class="loan-presets">
+          <button class="active" data-preset="home">🏠 Home Loan <small>7.0% p.a.</small></button>
+          <button data-preset="car">🚗 Car Loan <small>7.99% p.a.</small></button>
+          <button data-preset="personal">💳 Personal Loan <small>10.49% p.a.</small></button>
+        </div>
+
+        <div class="calc-field">
+          <div class="cf-top"><label for="calcAmount">Loan Amount</label><output id="amountOut">₹12,00,000</output></div>
+          <input type="number" id="calcAmount" min="100000" max="20000000" step="50000" value="1200000">
+          <input type="range" class="calc-range" id="amountRange" min="100000" max="20000000" step="50000" value="1200000">
+          <div class="range-labels"><span>₹1 Lakh</span><span>₹2 Crore</span></div>
+        </div>
+
+        <div class="calc-row">
+          <div class="calc-field">
+            <div class="cf-top"><label for="calcRate">Interest Rate</label><output id="rateOut">7.00%</output></div>
+            <input type="number" id="calcRate" min="5" max="24" step="0.05" value="7">
+            <input type="range" class="calc-range" id="rateRange" min="5" max="24" step="0.05" value="7">
+            <div class="range-labels"><span>5%</span><span>24%</span></div>
+          </div>
+          <div class="calc-field">
+            <div class="cf-top"><label for="calcTenure">Tenure (Years)</label><output id="tenureOut">5 yrs</output></div>
+            <input type="number" id="calcTenure" min="1" max="30" step="1" value="5">
+            <input type="range" class="calc-range" id="tenureRange" min="1" max="30" step="1" value="5">
+            <div class="range-labels"><span>1 yr</span><span>30 yrs</span></div>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <div class="cf-top"><label for="calcFee">Processing Fee</label><output id="feeOut">1.00%</output></div>
+          <input type="number" id="calcFee" min="0" max="5" step="0.1" value="1">
+          <input type="range" class="calc-range" id="feeRange" min="0" max="5" step="0.1" value="1">
+          <div class="range-labels"><span>0%</span><span>5%</span></div>
+        </div>
+
+        <div class="emi-btn-row">
+          <a href="apply.html" class="btn btn-primary btn-lg">Apply for This Loan →</a>
+        </div>
+      </div>
+
+      <div class="emi-outputs">
+        <div class="eo-head">
+          <h3>Your EMI Result</h3>
+          <span>Reducing Balance</span>
+        </div>
+
+        <div class="donut-wrap">
+          <div class="donut">
+            <svg viewBox="0 0 42 42">
+              <circle class="bg" cx="21" cy="21" r="15.9"></circle>
+              <circle class="principal" id="donutPrinc" cx="21" cy="21" r="15.9"></circle>
+              <circle class="interest" id="donutInt" cx="21" cy="21" r="15.9"></circle>
+            </svg>
+            <div class="donut-center"><span class="lbl">Total Pay</span><span class="val" id="donutTotal">₹14.3 L</span></div>
+          </div>
+          <div class="donut-legend">
+            <span class="lg"><span class="sw o"></span> Principal <b id="lgPrinc">₹12 L</b></span>
+            <span class="lg"><span class="sw b"></span> Interest <b id="lgInt">₹2.3 L</b></span>
+          </div>
+        </div>
+
+        <div class="emi-big">
+          <div class="k">Monthly EMI</div>
+          <div class="v">₹23,761 <span>/ month</span></div>
+        </div>
+
+        <div class="emi-stats">
+          <div class="emi-stat"><div class="k">Total Payment</div><div class="val" id="stTotal">₹14,25,660</div></div>
+          <div class="emi-stat"><div class="k">Total Interest</div><div class="val i" id="stInterest">₹2,25,660</div></div>
+          <div class="emi-stat"><div class="k">Principal</div><div class="val p" id="stPrinc">₹12,00,000</div></div>
+          <div class="emi-stat"><div class="k">Processing Fee</div><div class="val f" id="stFee">₹12,000</div></div>
+        </div>
+
+        <p class="emi-note">* Estimates only. Your actual EMI depends on the lender's final rate, credit profile and processing terms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS OF EMI CALCULATOR ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Why Use It</span>
+      <h2>Benefits of Our EMI Calculator</h2>
+      <p>Plan your borrowing with confidence — know your exact monthly commitment before you apply.</p>
+    </div>
+    <div class="emi-benefit-grid">
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-blue">⏱️</div>
+        <h3>Instant Results</h3>
+        <p>Get your EMI, total interest and total payment the moment you move a slider — no waiting, no downloads, instantly on screen.</p>
+      </div>
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-green">🎯</div>
+        <h3>Accurate Estimates</h3>
+        <p>Uses the same reducing-balance formula banks and NBFCs use, so your estimate closely matches the final sanctioned EMI.</p>
+      </div>
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-purple">🔄</div>
+        <h3>Compare Scenarios</h3>
+        <p>Test different loan amounts, tenures and rates side by side to find the EMI that fits comfortably in your monthly budget.</p>
+      </div>
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-orange">🧾</div>
+        <h3>Transparent Fees</h3>
+        <p>See your processing fee separately so you know the true cost of borrowing — no hidden charges, ever.</p>
+      </div>
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-teal">📊</div>
+        <h3>Principal &amp; Interest View</h3>
+        <p>The visual breakdown shows exactly how much of each payment clears principal versus interest over the loan.</p>
+      </div>
+      <div class="emi-benefit-card">
+        <div class="bc-ic bg-red">💳</div>
+        <h3>Pre-Loan Readiness</h3>
+        <p>Check affordability before applying — keeping your FOIR healthy improves approval chances with every lender.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY TAKE FROM FINONEST ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Why Finonest</span>
+      <h2>Why Take a Loan From Here?</h2>
+      <p>Comparing EMIs is step one. Getting them at the lowest rate is what we do best.</p>
+    </div>
+    <div class="why-finonest-grid">
+      <div class="why-item">
+        <div class="wi-icon bg-blue">🏦</div>
+        <h3>50+ Banking Partners</h3>
+        <p>We compare your profile with 50+ leading banks and NBFCs and bring you the lowest rate on the table.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-orange">📉</div>
+        <h3>Lowest Interest Rates</h3>
+        <p>Home loans from 7.30%, car loans from 7.99% and personal loans from 10.49% — rates that make your EMI lighter.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-green">⚡</div>
+        <h3>24-Hour Approval</h3>
+        <p>Pre-approved offers and a digital-first process mean most loans get approval and disbursal within 24 hours.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-purple">🔍</div>
+        <h3>Zero Hidden Fees</h3>
+        <p>Complete transparency on processing fees, foreclosure charges and every rupee — the EMI you see is what you pay.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-teal">🚪</div>
+        <h3>Doorstep Assistance</h3>
+        <p>From document pickup to verification and disbursal coordination, our team handles it all at your doorstep.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-red">🤝</div>
+        <h3>50,000+ Happy Customers</h3>
+        <p>9+ years of trust, 18+ branches and a 4.9-rated advisory team behind every loan we disburse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT IS EMI ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Learn</span>
+      <h2>What is an EMI?</h2>
+      <p>Equated Monthly Instalment — the fixed amount you pay every month towards repaying your loan.</p>
+    </div>
+    <div class="emi-info-grid">
+      <div class="why-item">
+        <div class="wi-icon bg-blue">💡</div>
+        <h3>Two Components</h3>
+        <p>Every EMI contains <strong>principal</strong> (the amount you borrowed) and <strong>interest</strong> (the lender's charge). Your EMI stays fixed for the whole tenure.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-orange">📉</div>
+        <h3>Reducing Balance</h3>
+        <p>Banks use the reducing-balance method — interest is charged only on the outstanding amount. So the interest share falls every month while the principal share rises.</p>
+      </div>
+      <div class="why-item">
+        <div class="wi-icon bg-green">🧮</div>
+        <h3>The Formula</h3>
+        <p>EMI = P × r × (1 + r)<sup>n</sup> ÷ [(1 + r)<sup>n</sup> − 1], where P = principal, r = monthly interest rate, n = number of months.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW TO USE ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Guide</span>
+      <h2>How to Use This EMI Calculator</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Pick Your Loan</h3>
+        <p>Select Home, Car or Personal loan to auto-fill typical rates.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Set the Amount</h3>
+        <p>Move the slider or type the exact loan amount you need.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Adjust Rate &amp; Tenure</h3>
+        <p>Enter the interest rate and repayment period in years.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>Read the Result</h3>
+        <p>Your EMI, total interest and total payment update instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMI REFERENCE TABLES ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Reference</span>
+      <h2>EMI Reference Tables</h2>
+      <p>Pre-calculated monthly EMIs for popular loan amounts at current indicative rates.</p>
+    </div>
+
+    <div class="section" style="padding:0 0 50px">
+      <div class="emi-table-caption">
+        <h3>Home Loan EMI — @ 7.30% p.a.</h3>
+        <span>Reducing balance</span>
+      </div>
+      <div class="table-wrap">
+        <table class="emi-table">
+          <thead>
+            <tr><th>Loan Amount</th><th>10 Years</th><th>15 Years</th><th>20 Years</th><th>25 Years</th><th>30 Years</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>₹20 Lakh</td><td>23,532</td><td>18,314</td><td>15,868</td><td>14,521</td><td>13,711</td></tr>
+            <tr><td>₹30 Lakh</td><td>35,298</td><td>27,471</td><td>23,802</td><td>21,781</td><td>20,567</td></tr>
+            <tr><td>₹40 Lakh</td><td>47,064</td><td>36,627</td><td>31,736</td><td>29,041</td><td>27,423</td></tr>
+            <tr><td>₹50 Lakh</td><td>58,830</td><td>45,784</td><td>39,670</td><td>36,302</td><td>34,279</td></tr>
+            <tr><td>₹1 Crore</td><td>1,17,661</td><td>91,568</td><td>79,341</td><td>72,603</td><td>68,557</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section" style="padding:0 0 50px">
+      <div class="emi-table-caption">
+        <h3>Car Loan EMI — @ 7.99% p.a.</h3>
+        <span>Reducing balance</span>
+      </div>
+      <div class="table-wrap">
+        <table class="emi-table">
+          <thead>
+            <tr><th>Loan Amount</th><th>1 Year</th><th>3 Years</th><th>5 Years</th><th>7 Years</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>₹3 Lakh</td><td>26,095</td><td>9,400</td><td>6,081</td><td>4,674</td></tr>
+            <tr><td>₹5 Lakh</td><td>43,492</td><td>15,666</td><td>10,136</td><td>7,791</td></tr>
+            <tr><td>₹7 Lakh</td><td>60,889</td><td>21,932</td><td>14,190</td><td>10,907</td></tr>
+            <tr><td>₹10 Lakh</td><td>86,984</td><td>31,332</td><td>20,272</td><td>15,581</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section" style="padding:0">
+      <div class="emi-table-caption">
+        <h3>Personal Loan EMI — @ 10.49% p.a.</h3>
+        <span>Reducing balance</span>
+      </div>
+      <div class="table-wrap">
+        <table class="emi-table">
+          <thead>
+            <tr><th>Loan Amount</th><th>1 Year</th><th>2 Years</th><th>3 Years</th><th>5 Years</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>₹1 Lakh</td><td>8,814</td><td>4,637</td><td>3,250</td><td>2,149</td></tr>
+            <tr><td>₹2 Lakh</td><td>17,629</td><td>9,274</td><td>6,500</td><td>4,298</td></tr>
+            <tr><td>₹3 Lakh</td><td>26,443</td><td>13,911</td><td>9,749</td><td>6,447</td></tr>
+            <tr><td>₹5 Lakh</td><td>44,072</td><td>23,186</td><td>16,249</td><td>10,744</td></tr>
+            <tr><td>₹10 Lakh</td><td>88,144</td><td>46,371</td><td>32,498</td><td>21,489</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:34px">Figures are indicative and rounded. Actual EMIs depend on the lender's final rate and your eligibility.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">FAQs</span>
+      <h2>EMI Calculator — Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">What factors affect my EMI?<span class="icon">+</span></div>
+        <div class="faq-a"><p>Three things decide your EMI: the loan amount, the interest rate and the tenure. A larger loan or a lower tenure means a higher EMI; a longer tenure lowers the EMI but increases total interest.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this calculator accurate for my loan?<span class="icon">+</span></div>
+        <div class="faq-a"><p>The calculator uses the standard reducing-balance formula used by all Indian banks and NBFCs. Actual figures may vary slightly with the lender's exact pricing, processing fees and when the first EMI begins.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How can I reduce my monthly EMI?<span class="icon">+</span></div>
+        <div class="faq-a"><p>Choose a longer tenure, make a higher down payment to reduce the principal, or improve your credit score to qualify for a lower interest rate.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Should I prefer a shorter or longer tenure?<span class="icon">+</span></div>
+        <div class="faq-a"><p>A shorter tenure means higher EMIs but much lower total interest. A longer tenure gives lower EMIs but you pay considerably more interest over the life of the loan. Choose based on your monthly cash flow.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does the processing fee affect my EMI?<span class="icon">+</span></div>
+        <div class="faq-a"><p>Processing fees are usually deducted from the sanctioned amount or paid upfront — they don't change the EMI but increase your total cost of borrowing. We show it separately so you see the full picture.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section" style="padding-top:0;margin-top:-1px">
+  <div class="container">
+    <div class="small-cta">
+      <div>
+        <h3>Happy With Your EMI Estimate?</h3>
+        <p>Apply now and let our experts lock the lowest rate from 50+ partner banks for your exact profile.</p>
+      </div>
+      <a href="apply.html" class="btn btn-orange btn-lg">Apply Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-mark">F</span>
+          <span class="logo-text" style="color:#fff">Finonest<span style="color:var(--orange)">.</span></span>
+        </a>
+        <p>Finonest India Pvt. Ltd. is India's fastest growing distributor of home, car, personal &amp; business loans and credit cards. Trusted since 2017.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zm0 3.68a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.6l5.24 6.93L18.9 1.15zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Loans</h4>
+        <ul>
+          <li><a href="home-loan.html">Home Loan</a></li>
+          <li><a href="car-loan.html">Car Loan</a></li>
+          <li><a href="personal-loan.html">Personal Loan</a></li>
+          <li><a href="business-loan.html">Business Loan</a></li>
+          <li><a href="loan-against-property.html">Loan Against Property</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="credit-cards.html">Credit Cards</a></li>
+          <li><a href="emi-calculator.html">EMI Calculator</a></li>
+          <li><a href="apply.html">Apply for Loan</a></li>
+          <li><a href="dsa-partner.html">DSA Partner</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>3rd Floor, BL Tower 1, Tonk Rd,<br>Mahaveer Nagar, Jaipur,<br>Rajasthan 302018</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+91 94625 53887</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@finonest.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span>&copy; <span id="year"></span> Finonest India Pvt. Ltd. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a> &nbsp;·&nbsp; <a href="#">Return &amp; Refund Policy</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Mobile menu ===== -->
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="home-loan.html">Home Loan</a>
+  <a href="car-loan.html">Car Loan</a>
+  <a href="personal-loan.html">Personal Loan</a>
+  <a href="business-loan.html">Business Loan</a>
+  <a href="loan-against-property.html">Loan Against Property</a>
+  <a href="credit-cards.html">Credit Cards</a>
+  <a href="emi-calculator.html">EMI Calculator</a>
+  <a href="about.html">About Us</a>
+  <a href="dsa-partner.html">DSA Partner</a>
+  <a href="contact.html">Contact</a>
+  <a href="apply.html" class="mobile-cta">Apply Now</a>
+</div>
+
+<script src="js/main.js"></script>
+
+<!-- ===== Floating Action Buttons ===== -->
+<div class="fab-stack">
+  <a href="https://wa.me/919462553887" target="_blank" rel="noopener" class="fab fab-wa" aria-label="Chat on WhatsApp">
+    <span class="fab-pulse"></span>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="fab-label">Chat on WhatsApp</span>
+  </a>
+  <a href="tel:+919462553887" class="fab fab-call" aria-label="Call us now">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span class="fab-label">Call Now</span>
+  </a>
+  <a href="emi-calculator.html" id="fabEmi" class="fab fab-emi" aria-label="Open EMI Calculator">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="12" y1="15" x2="12" y2="15.01"/><line x1="16" y1="15" x2="16" y2="15.01"/></svg>
+    <span class="fab-label">EMI Calculator</span>
+  </a>
+</div>
+</body>
+</html>
