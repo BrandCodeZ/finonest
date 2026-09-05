@@ -12,8 +12,8 @@
  */
 
 return [
-    'DB_HOST' => 'localhost',
-    'DB_NAME' => 'finonest_db',
-    'DB_USER' => 'root',
-    'DB_PASS' => '',
+    'DB_HOST' => 'sql101.byethost16.com',
+    'DB_NAME' => 'b16_41611529_finonest',
+    'DB_USER' => 'b16_41611529',
+    'DB_PASS' => 'sudhanshuai',
 ];
